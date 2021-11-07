@@ -2,6 +2,8 @@
 
 That simple inplace image magnifier.
 
+[![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+
 ## Setup
 
 ### 1. As standalone script
