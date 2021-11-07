@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Magnify Image</title>
+    
+    <script type="module" crossorigin src="/magni-preview-inplace.umd.js"></script>
+  </head>
+  <body>
+    <div class="grid">
+      <magni-image-inplace>
+        <img src="https://source.unsplash.com/random" alt="Random pic from unsplash">
+      </magni-image-inplace>
+      <div>
+        <p>Example with img tag:</p>
+        <code>
+          &lt;magni-image-inplace&gt;<br>
+            &nbsp;&nbsp;&lt;img src=&quot;https://source.unsplash.com/random&quot; alt="Random pic from unsplash" &gt;<br>
+          &lt;/magni-image-inplace&gt;<br>
+        </code>
+      </div>
+      <magni-image-inplace>
+        <picture>
+          <source srcset="https://source.unsplash.com/random/1920x1080" media="(min-width: 1920px)">
+          <source srcset="https://source.unsplash.com/random/1280x720" media="(min-width: 1280px)">
+          <img src="https://source.unsplash.com/random/800x800" alt="Random pic from unsplash">
+        </picture>
+      </magni-image-inplace>
+      <div>
+        <p>Example with picture tag:</p>
+        <code>
+          &lt;magni-image-inplace&gt;<br>
+            &nbsp;&nbsp;&lt;picture&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;source srcset=&quot;https://source.unsplash.com/random/1920x1080&quot; media=&quot;(min-width: 1920px)&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;source srcset=&quot;https://source.unsplash.com/random/1280x720&quot; media=&quot;(min-width: 1280px)&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;img src=&quot;https://source.unsplash.com/random/800x800&quot; alt="Random pic from unsplash" &gt;<br>
+            &nbsp;&nbsp;&lt;/picture&gt;<br>
+          &lt;/magni-image-inplace&gt;<br>
+        </code>
+      </div>
+    </div>
+    
+  </body>
+</html>
