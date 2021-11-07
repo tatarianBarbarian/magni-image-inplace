@@ -1,46 +1,3 @@
-const p = function polyfill() {
-  const relList = document.createElement("link").relList;
-  if (relList && relList.supports && relList.supports("modulepreload")) {
-    return;
-  }
-  for (const link of document.querySelectorAll('link[rel="modulepreload"]')) {
-    processPreload(link);
-  }
-  new MutationObserver((mutations) => {
-    for (const mutation of mutations) {
-      if (mutation.type !== "childList") {
-        continue;
-      }
-      for (const node of mutation.addedNodes) {
-        if (node.tagName === "LINK" && node.rel === "modulepreload")
-          processPreload(node);
-      }
-    }
-  }).observe(document, { childList: true, subtree: true });
-  function getFetchOpts(script) {
-    const fetchOpts = {};
-    if (script.integrity)
-      fetchOpts.integrity = script.integrity;
-    if (script.referrerpolicy)
-      fetchOpts.referrerPolicy = script.referrerpolicy;
-    if (script.crossorigin === "use-credentials")
-      fetchOpts.credentials = "include";
-    else if (script.crossorigin === "anonymous")
-      fetchOpts.credentials = "omit";
-    else
-      fetchOpts.credentials = "same-origin";
-    return fetchOpts;
-  }
-  function processPreload(link) {
-    if (link.ep)
-      return;
-    link.ep = true;
-    const fetchOpts = getFetchOpts(link);
-    fetch(link.href, fetchOpts);
-  }
-};
-p();
-var style = "";
 const template = document.createElement("template");
 template.innerHTML = `
 <style>
@@ -134,13 +91,10 @@ class MagniImageInplace extends HTMLElement {
 const currentScript = document.currentScript;
 if (currentScript) {
   if (currentScript.getAttribute("data-standalone") !== null) {
-    let tagName2 = currentScript.dataset.tagName ? currentScript.dataset.tagName : "magni-image-inplace";
-    if (!window.customElements.get(tagName2)) {
-      window.customElements.define(tagName2, MagniImageInplace);
+    let tagName = currentScript.dataset.tagName ? currentScript.dataset.tagName : "magni-image-inplace";
+    if (!window.customElements.get(tagName)) {
+      window.customElements.define(tagName, MagniImageInplace);
     }
   }
 }
-let tagName = "magni-image-inplace";
-if (!window.customElements.get(tagName)) {
-  window.customElements.define(tagName, MagniImageInplace);
-}
+export { MagniImageInplace as default };
