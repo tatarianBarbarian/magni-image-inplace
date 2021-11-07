@@ -1,0 +1,27 @@
+{
+  "name": "magni-image-inplace",
+  "description": "That simple web-component based image magnifier",
+  "author": {
+    "name" : "Felix Khafizov",
+    "url" : "https://f-k.dev/"
+  },
+  "homepage": "https://github.com/tatarianBarbarian/magni-image-inplace",
+  "version": "0.0.0",
+  "files": ["dist"],
+  "main": "./dist/magni-preview-inplace.umd.js",
+  "module": "./dist/magni-preview-inplace.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/magni-preview-inplace.es.js",
+      "require": "./dist/magni-preview-inplace.umd.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --emptyOutDir",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^2.6.4"
+  }
+}
