@@ -5,7 +5,7 @@ module.exports = defineConfig({
   base: '/magni-image-inplace/',
   build: {
     emptyOutDir: false,
-    outDir: 'dist',
+    outDir: 'dist/doc',
     rollupOptions: {
         input: 'index.html'
     }

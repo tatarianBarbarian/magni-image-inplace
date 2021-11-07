@@ -8,14 +8,14 @@
   "homepage": "https://github.com/tatarianBarbarian/magni-image-inplace",
   "version": "0.0.3",
   "files": [
-    "dist"
+    "dist/lib"
   ],
-  "main": "./dist/magni-preview-inplace.umd.js",
-  "module": "./dist/magni-preview-inplace.es.js",
+  "main": "./dist/lib/magni-preview-inplace.umd.js",
+  "module": "./dist/lib/magni-preview-inplace.es.js",
   "exports": {
     ".": {
-      "import": "./dist/magni-preview-inplace.es.js",
-      "require": "./dist/magni-preview-inplace.umd.js"
+      "import": "./dist/lib/magni-preview-inplace.es.js",
+      "require": "./dist/lib/magni-preview-inplace.umd.js"
     }
   },
   "scripts": {
@@ -23,7 +23,7 @@
     "build": "vite build",
     "build.doc": "vite build --config vite-doc.config.js",
     "serve": "vite preview",
-    "deploy.doc": "npm run build.doc && gh-pages -d dist/"
+    "deploy.doc": "npm run build.doc && gh-pages -d dist/doc/"
   },
   "devDependencies": {
     "gh-pages": "^3.2.3",
