@@ -5,6 +5,10 @@
     "name": "Felix Khafizov",
     "url": "https://f-k.dev/"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tatarianBarbarian/magni-image-inplace.git"
+  },
   "homepage": "https://tatarianbarbarian.github.io/magni-image-inplace/",
   "version": "0.0.5",
   "files": [
