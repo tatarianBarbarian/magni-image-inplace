@@ -6,7 +6,7 @@ module.exports = defineConfig({
     emptyOutDir: false,
     outDir: 'dist/lib',
     lib: {
-      entry: path.resolve(__dirname, 'src/MagniPreviewInplace.js'),
+      entry: path.resolve(__dirname, 'src/lib/MagniImageInplace.js'),
       name: 'magni-preview-inplace',
       fileName: (format) => `magni-preview-inplace.${format}.js`,
     },
