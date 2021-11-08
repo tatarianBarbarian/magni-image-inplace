@@ -1,4 +1,4 @@
-(function(s,o){typeof exports=="object"&&typeof module!="undefined"?module.exports=o():typeof define=="function"&&define.amd?define(o):(s=typeof globalThis!="undefined"?globalThis:s||self,s["magni-preview-inplace"]=o())})(this,function(){"use strict";const s=document.createElement("template");s.innerHTML=`
+(function(t,s){typeof exports=="object"&&typeof module!="undefined"?s(exports):typeof define=="function"&&define.amd?define(["exports"],s):(t=typeof globalThis!="undefined"?globalThis:t||self,s(t["magni-preview-inplace"]={}))})(this,function(t){"use strict";const s=document.createElement("template");s.innerHTML=`
 <style>
     :host {
         display: block;
@@ -28,12 +28,8 @@
         max-width: unset;
         max-height: unset;
     }
-
-    .magni-viewer.mobile {
-        overflow: scroll;
-    }
 </style>
 
 <div class="magni-viewer preview">
     <slot class="preview">Place image here?</slot>
-</div>`;const o=(i,n)=>{Object.keys(n).forEach(e=>i.style[e]=n[e])},g=(i,n)=>{Object.keys(n).forEach(e=>i.style[e]="unset")};class d extends HTMLElement{connectedCallback(){const n=this.attachShadow({mode:"closed"});n.appendChild(s.content.cloneNode(!0));const e=this.querySelector("img"),t=n.querySelector(".magni-viewer"),w=1024,l={maxWidth:"100%",maxHeight:"100%",transform:"translate(0, 0)",objectFit:"contain"};o(e,l),window.innerWidth<w?(t.classList.add("mobile"),t.addEventListener("click",()=>{t.classList.toggle("preview"),t.scroll(e.width/2,e.height/2)})):(t.addEventListener("mousemove",m=>{g(e,l);const h=this.getBoundingClientRect();t.classList.remove("preview");const c=t.offsetWidth,r=t.offsetHeight,u=m.clientX-h.x-c/2,p=m.clientY-h.y-r/2,f=e.width/c-1,v=e.height/r-1,y=-e.width/2+c/2,b=-e.height/2+r/2;let x=y+u*-f,E=b+p*-v;e.style.transform=`translate(${x}px, ${E}px)`}),t.addEventListener("mouseleave",()=>{t.classList.add("preview"),o(e,l)}))}}const a=document.currentScript;if(a&&a.getAttribute("data-standalone")!==null){let i=a.dataset.tagName?a.dataset.tagName:"magni-image-inplace";window.customElements.get(i)||window.customElements.define(i,d)}return d});
+</div>`;const m=(i,n)=>{Object.keys(n).forEach(e=>i.style[e]=n[e])},f=(i,n)=>{Object.keys(n).forEach(e=>i.style[e]="unset")},g={media:"(min-width: 1280px)"},w=i=>Object.assign(g,i);class c extends HTMLElement{connectedCallback(){const n=this.attachShadow({mode:"closed"});n.appendChild(s.content.cloneNode(!0));const e=this.querySelector("img"),a=n.querySelector(".magni-viewer"),l={maxWidth:"100%",maxHeight:"100%",transform:"translate(0, 0)",objectFit:"contain"};m(e,l);const p=this.getAttribute("media")||g.media;window.matchMedia(p).matches&&(a.addEventListener("mousemove",h=>{f(e,l);const u=this.getBoundingClientRect();a.classList.remove("preview");const d=a.offsetWidth,r=a.offsetHeight,v=h.clientX-u.x-d/2,y=h.clientY-u.y-r/2,b=e.width/d-1,x=e.height/r-1,S=-e.width/2+d/2,E=-e.height/2+r/2;let M=S+v*-b,T=E+y*-x;e.style.transform=`translate(${M}px, ${T}px)`}),a.addEventListener("mouseleave",()=>{a.classList.add("preview"),m(e,l)}))}}const o=document.currentScript;if(o&&o.getAttribute("data-standalone")!==null){let i=o.dataset.tagName?o.dataset.tagName:"magni-image-inplace";window.customElements.get(i)||window.customElements.define(i,c)}t.MagniImageInplace=c,t.config=w,t.default=c,Object.defineProperty(t,"__esModule",{value:!0}),t[Symbol.toStringTag]="Module"});

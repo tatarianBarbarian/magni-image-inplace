@@ -43,7 +43,13 @@ const unsetStyles = (el, styles) => {
     Object.keys(styles).forEach( prop => el.style[prop] = 'unset');
 }
 
-class MagniImageInplace extends HTMLElement {
+const configuration = {
+    media: '(min-width: 1280px)'
+};
+
+export const config = (configObj) => Object.assign(configuration, configObj);
+
+export class MagniImageInplace extends HTMLElement {
     connectedCallback() {
         const shadowRoot = this.attachShadow({mode: 'closed'});
         
@@ -51,8 +57,6 @@ class MagniImageInplace extends HTMLElement {
 
         const image = this.querySelector('img');
         const viewer = shadowRoot.querySelector('.magni-viewer');
-
-        const mobileBp = 1024;
 
         const defaultStyles = {
             maxWidth: '100%',
@@ -63,7 +67,9 @@ class MagniImageInplace extends HTMLElement {
         
         applyStyles(image, defaultStyles);
 
-        if (window.innerWidth > mobileBp) {
+        const mediaQuery = this.getAttribute('media') || configuration.media;
+
+        if (window.matchMedia(mediaQuery).matches) {
             viewer.addEventListener('mousemove', (e) => {
                 unsetStyles(image, defaultStyles);
                 const br = this.getBoundingClientRect();

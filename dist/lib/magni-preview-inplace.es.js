@@ -29,10 +29,6 @@ template.innerHTML = `
         max-width: unset;
         max-height: unset;
     }
-
-    .magni-viewer.mobile {
-        overflow: scroll;
-    }
 </style>
 
 <div class="magni-viewer preview">
@@ -44,13 +40,16 @@ const applyStyles = (el, styles) => {
 const unsetStyles = (el, styles) => {
   Object.keys(styles).forEach((prop) => el.style[prop] = "unset");
 };
+const configuration = {
+  media: "(min-width: 1280px)"
+};
+const config = (configObj) => Object.assign(configuration, configObj);
 class MagniImageInplace extends HTMLElement {
   connectedCallback() {
     const shadowRoot = this.attachShadow({ mode: "closed" });
     shadowRoot.appendChild(template.content.cloneNode(true));
     const image = this.querySelector("img");
     const viewer = shadowRoot.querySelector(".magni-viewer");
-    const mobileBp = 1024;
     const defaultStyles = {
       maxWidth: "100%",
       maxHeight: "100%",
@@ -58,13 +57,8 @@ class MagniImageInplace extends HTMLElement {
       objectFit: "contain"
     };
     applyStyles(image, defaultStyles);
-    if (window.innerWidth < mobileBp) {
-      viewer.classList.add("mobile");
-      viewer.addEventListener("click", () => {
-        viewer.classList.toggle("preview");
-        viewer.scroll(image.width / 2, image.height / 2);
-      });
-    } else {
+    const mediaQuery = this.getAttribute("media") || configuration.media;
+    if (window.matchMedia(mediaQuery).matches) {
       viewer.addEventListener("mousemove", (e) => {
         unsetStyles(image, defaultStyles);
         const br = this.getBoundingClientRect();
@@ -97,4 +91,4 @@ if (currentScript) {
     }
   }
 }
-export { MagniImageInplace as default };
+export { MagniImageInplace, config, MagniImageInplace as default };
