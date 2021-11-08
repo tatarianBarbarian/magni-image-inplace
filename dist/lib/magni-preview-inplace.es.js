@@ -25,9 +25,12 @@ template.innerHTML = `
         max-height: 100%;
     }
 
-    .magni-viewer.mobile slot::slotted(*) {
-        max-width: unset;
-        max-height: unset;
+    .magni-viewer.preview slot::slotted(*) {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>
 
