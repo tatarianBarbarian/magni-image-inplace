@@ -29,10 +29,6 @@ template.innerHTML = `
         max-width: unset;
         max-height: unset;
     }
-
-    .magni-viewer.mobile {
-        overflow: scroll;
-    }
 </style>
 
 <div class="magni-viewer preview">
@@ -67,14 +63,7 @@ class MagniImageInplace extends HTMLElement {
         
         applyStyles(image, defaultStyles);
 
-        if (window.innerWidth < mobileBp) {
-            viewer.classList.add('mobile');
-            viewer.addEventListener('click', () => {
-                viewer.classList.toggle('preview');
-                viewer.scroll(image.width / 2, image.height / 2);
-            });
-        }
-        else {
+        if (window.innerWidth > mobileBp) {
             viewer.addEventListener('mousemove', (e) => {
                 unsetStyles(image, defaultStyles);
                 const br = this.getBoundingClientRect();
