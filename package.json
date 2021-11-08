@@ -5,6 +5,7 @@
     "name": "Felix Khafizov",
     "url": "https://f-k.dev/"
   },
+  "keywords": ["magni-image-inplace", "magnify", "magnify image", "image magnifier", "react image magnify", "vue image magnify", "magnify inplace"],
   "license": "MIT",
   "repository": {
     "type": "git",
