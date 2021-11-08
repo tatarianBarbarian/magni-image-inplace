@@ -5,14 +5,22 @@
     "name": "Felix Khafizov",
     "url": "https://f-k.dev/"
   },
-  "keywords": ["magni-image-inplace", "magnify", "magnify image", "image magnifier", "react image magnify", "vue image magnify", "magnify inplace"],
+  "keywords": [
+    "magni-image-inplace",
+    "magnify",
+    "magnify image",
+    "image magnifier",
+    "react image magnify",
+    "vue image magnify",
+    "magnify inplace"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/tatarianBarbarian/magni-image-inplace.git"
   },
   "homepage": "https://tatarianbarbarian.github.io/magni-image-inplace/",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "files": [
     "dist/lib"
   ],
