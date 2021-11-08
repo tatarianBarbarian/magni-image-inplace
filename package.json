@@ -24,10 +24,11 @@
     }
   },
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "vite --config vite-doc.config.js",
+    "build.lib": "vite build",
     "build.doc": "vite build --config vite-doc.config.js",
-    "serve": "vite preview",
+    "build": "npm run build.lib && npm run build.doc",
+    "serve": "vite preview --config vite-doc.config.js",
     "deploy.doc": "npm run build.doc && gh-pages -d dist/doc/"
   },
   "devDependencies": {

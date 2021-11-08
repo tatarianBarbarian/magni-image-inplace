@@ -1,4 +1,4 @@
-import MagniImageInplace from '../../lib/MagniImageInplace';
+import MagniImageInplace from '../lib/MagniImageInplace';
 
 let tagName = 'magni-image-inplace';
 
