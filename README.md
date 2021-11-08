@@ -11,7 +11,7 @@ That simple inplace image magnifier.
 
 ```html
 <script 
-    src="https://cdn.jsdelivr.net/npm/magni-image-inplace/dist/magni-preview-inplace.umd.js"
+    src="https://cdn.jsdelivr.net/npm/magni-image-inplace@latest/dist/lib/magni-preview-inplace.umd.js"
     data-standalone
     data-tag-name="magnify-image-inplace"
     defer
