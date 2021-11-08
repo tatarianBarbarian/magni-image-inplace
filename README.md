@@ -37,6 +37,8 @@ if (!window.customElements.get("magni-image-inplace")) {
 ```
 
 ## Usage
+See [examples](https://tatarianbarbarian.github.io/magni-image-inplace/)
+
 Component works as a wrapper for `<img>`:
 
 ```html
