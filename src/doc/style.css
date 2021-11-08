@@ -21,7 +21,18 @@ img[data-full] {
 }
 
 .grid {
+  max-width: 1150px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 300px auto;
   gap: 25px;
+}
+
+magni-image-inplace {
+  margin: 0 auto;
+}
+
+.image-credit {
+  text-align: center;
+  font-size: 12px;
 }

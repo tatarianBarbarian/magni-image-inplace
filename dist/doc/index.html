@@ -5,21 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Magnify Image</title>
     
-    <script type="module" crossorigin src="/magni-image-inplace/assets/index.43a49f67.js"></script>
-    <link rel="stylesheet" href="/magni-image-inplace/assets/index.06c8510d.css">
+    <script type="module" crossorigin src="/magni-image-inplace/assets/index.8edde05d.js"></script>
+    <link rel="stylesheet" href="/magni-image-inplace/assets/index.3c680e90.css">
   </head>
   <body>
     <header>
       <center>
-        <b>magni-image-inplace</b><br>
+        <h1>magni-image-inplace</h1><br>
         <a href="https://www.npmjs.com/package/magni-image-inplace" target="_blank" rel="noopener noreferrer">npm</a>
         <a href="https://github.com/tatarianBarbarian/magni-image-inplace" target="_blank" rel="noopener noreferrer">GitHub</a>
       </center>
     </header>
     <div class="grid">
-      <magni-image-inplace>
-        <img src="https://source.unsplash.com/random" alt="Random pic from unsplash">
-      </magni-image-inplace>
+      <div>
+        <magni-image-inplace>
+          <img src="/magni-image-inplace/assets/shoe.ffc157b6.jpg" alt="Shoe image">
+        </magni-image-inplace>
+        <p class="image-credit">
+          Photo by <a href="https://unsplash.com/@ikredenets?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Irene Kredenets</a> on <a href="https://unsplash.com/s/photos/product?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+        </p>
+      </div>
       <div>
         <p>Example with img tag:</p>
         <code>
@@ -28,13 +33,18 @@
           &lt;/magni-image-inplace&gt;<br>
         </code>
       </div>
-      <magni-image-inplace>
-        <picture>
-          <source srcset="https://source.unsplash.com/random/1920x1080" media="(min-width: 1920px)">
-          <source srcset="https://source.unsplash.com/random/1280x720" media="(min-width: 1280px)">
-          <img src="https://source.unsplash.com/random/800x800" alt="Random pic from unsplash">
-        </picture>
-      </magni-image-inplace>
+      <div>
+        <magni-image-inplace media="(min-width: 500px)">
+          <picture>
+            <source srcset="/magni-image-inplace/assets/dishes.d766047b.jpg " media="(min-width: 1900px)">
+            <source srcset="/magni-image-inplace/assets/candy.aa6d0f6c.jpg " media="(min-width: 1600px)">
+            <img src="/magni-image-inplace/assets/polaroid.001c43fa.jpg" alt="Random pic from unsplash">
+          </picture>
+        </magni-image-inplace>
+        <p class="image-credit">
+          Photos by <a href="https://unsplash.com/@enikoo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">eniko kis</a> on <a href="https://unsplash.com/@enikoo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+        </p>
+      </div>
       <div>
         <p>Example with picture tag:</p>
         <code>
