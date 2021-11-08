@@ -4,6 +4,15 @@ That simple inplace image magnifier.
 
 [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
+## Features
+
+### Web-component based
+Works with modern front-end frameworks.
+Demos:
+- [React](https://codesandbox.io/s/magni-image-inplace-react-example-8cox6)
+- [Vue](https://codesandbox.io/s/magni-image-inplace-vue-example-gvehq)
+
+
 ## Setup
 
 ### 1. As standalone script
