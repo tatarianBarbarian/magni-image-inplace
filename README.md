@@ -77,7 +77,7 @@ It is possible to pick other. Please note that Custom Elements specification all
 
 ```html
 <script 
-    src="https://cdn.jsdelivr.net/npm/magni-image-inplace@latest/dist/lib/magni-preview-inplace.umd.js"
+    src="https://cdn.jsdelivr.net/npm/magni-image-inplace@0.2.0/dist/lib/magni-preview-inplace.umd.js"
     data-standalone
     data-tagname="magni-img"
     defer
