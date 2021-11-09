@@ -13,22 +13,27 @@ Demos:
 - [Vue](https://codesandbox.io/s/magni-image-inplace-vue-example-gvehq)
 
 
-## Setup
+## Installation
+
+- Standalone script
+- NPM package 
 
 ### 1. As standalone script
 
+[Example](https://codesandbox.io/s/magni-image-inplace-standalone-script-example-s3z7y)
+
 ```html
 <script 
-    src="https://cdn.jsdelivr.net/npm/magni-image-inplace@latest/dist/lib/magni-preview-inplace.umd.js"
+    src="https://cdn.jsdelivr.net/npm/magni-image-inplace@0.2.0/dist/lib/magni-preview-inplace.umd.js"
     data-standalone
     data-tag-name="magnify-image-inplace"
     defer
 ></script>
 ```
 
-### 2. As module
+### 2. As NPM-package
 
-Install module:
+Install package:
 
 ```
 npm install magni-image-inplace
