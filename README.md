@@ -27,7 +27,7 @@ Demos:
 
 ### As standalone script 
 
-[Example](https://codesandbox.io/s/magni-image-inplace-standalone-script-example-s3z7y)
+[Example](https://codesandbox.io/s/magni-image-inplace-standalone-script-example-s3z7y?file=/index.html:95-107)
 
 ```html
 <script 
