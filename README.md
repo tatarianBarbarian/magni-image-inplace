@@ -2,6 +2,8 @@
 
 That simple inplace image magnifier.
 
+[Demo](https://tatarianbarbarian.github.io/magni-image-inplace/)
+
 [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 ## Features
