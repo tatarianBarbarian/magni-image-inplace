@@ -1,3 +1,19 @@
+var __defProp = Object.defineProperty;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
 const template = document.createElement("template");
 template.innerHTML = `
 <style>
@@ -43,55 +59,74 @@ const applyStyles = (el, styles) => {
 const unsetStyles = (el, styles) => {
   Object.keys(styles).forEach((prop) => el.style[prop] = "unset");
 };
-const configuration = {
+const defaultConfig = {
+  tagname: "magni-image-inplace",
   media: "(min-width: 1280px)"
 };
-const config = (configObj) => Object.assign(configuration, configObj);
-class MagniImageInplace extends HTMLElement {
-  connectedCallback() {
-    const shadowRoot = this.attachShadow({ mode: "closed" });
-    shadowRoot.appendChild(template.content.cloneNode(true));
-    const image = this.querySelector("img");
-    const viewer = shadowRoot.querySelector(".magni-viewer");
-    const defaultStyles = {
-      maxWidth: "100%",
-      maxHeight: "100%",
-      transform: "translate(0, 0)",
-      objectFit: "contain"
-    };
-    applyStyles(image, defaultStyles);
-    const mediaQuery = this.getAttribute("media") || configuration.media;
-    if (window.matchMedia(mediaQuery).matches) {
-      viewer.addEventListener("mousemove", (e) => {
-        unsetStyles(image, defaultStyles);
-        const br = this.getBoundingClientRect();
-        viewer.classList.remove("preview");
-        const viewerW = viewer.offsetWidth;
-        const viewerH = viewer.offsetHeight;
-        const mouseX = e.clientX - br.x - viewerW / 2;
-        const mouseY = e.clientY - br.y - viewerH / 2;
-        const kX = image.width / viewerW - 1;
-        const kY = image.height / viewerH - 1;
-        const defaultTranslationX = -image.width / 2 + viewerW / 2;
-        const defaultTranslationY = -image.height / 2 + viewerH / 2;
-        let translateX = defaultTranslationX + mouseX * -kX;
-        let translateY = defaultTranslationY + mouseY * -kY;
-        image.style.transform = `translate(${translateX}px, ${translateY}px)`;
-      });
-      viewer.addEventListener("mouseleave", () => {
-        viewer.classList.add("preview");
-        applyStyles(image, defaultStyles);
-      });
+const getConfig = (overrideConfig = {}) => __spreadValues(__spreadValues({}, defaultConfig), overrideConfig);
+const getStandaloneConfig = (currentScript2) => {
+  const dataAttrsConfigMap = {
+    tagname: "tagname",
+    media: "media"
+  };
+  const overrideConfig = {};
+  Object.entries(dataAttrsConfigMap).forEach(([dataAttr, configKey]) => {
+    const attrValue = currentScript2.dataset[dataAttr];
+    if (attrValue) {
+      overrideConfig[configKey] = attrValue;
+    }
+  });
+  return getConfig(overrideConfig);
+};
+const init = (overrideConfig = {}) => {
+  const configuration = getConfig(overrideConfig);
+  class MagniImageInplace extends HTMLElement {
+    connectedCallback() {
+      const shadowRoot = this.attachShadow({ mode: "closed" });
+      shadowRoot.appendChild(template.content.cloneNode(true));
+      const image = this.querySelector("img");
+      const viewer = shadowRoot.querySelector(".magni-viewer");
+      const defaultStyles = {
+        maxWidth: "100%",
+        maxHeight: "100%",
+        transform: "translate(0, 0)",
+        objectFit: "contain"
+      };
+      applyStyles(image, defaultStyles);
+      const mediaQuery = this.getAttribute("media") || configuration.media;
+      if (window.matchMedia(mediaQuery).matches) {
+        viewer.addEventListener("mousemove", (e) => {
+          unsetStyles(image, defaultStyles);
+          const br = this.getBoundingClientRect();
+          viewer.classList.remove("preview");
+          const viewerW = viewer.offsetWidth;
+          const viewerH = viewer.offsetHeight;
+          const mouseX = e.clientX - br.x - viewerW / 2;
+          const mouseY = e.clientY - br.y - viewerH / 2;
+          const kX = image.width / viewerW - 1;
+          const kY = image.height / viewerH - 1;
+          const defaultTranslationX = -image.width / 2 + viewerW / 2;
+          const defaultTranslationY = -image.height / 2 + viewerH / 2;
+          let translateX = defaultTranslationX + mouseX * -kX;
+          let translateY = defaultTranslationY + mouseY * -kY;
+          image.style.transform = `translate(${translateX}px, ${translateY}px)`;
+        });
+        viewer.addEventListener("mouseleave", () => {
+          viewer.classList.add("preview");
+          applyStyles(image, defaultStyles);
+        });
+      }
     }
   }
-}
+  if (!window.customElements.get(configuration.tagname)) {
+    window.customElements.define(configuration.tagname, MagniImageInplace);
+  }
+};
 const currentScript = document.currentScript;
 if (currentScript) {
   if (currentScript.getAttribute("data-standalone") !== null) {
-    let tagName = currentScript.dataset.tagName ? currentScript.dataset.tagName : "magni-image-inplace";
-    if (!window.customElements.get(tagName)) {
-      window.customElements.define(tagName, MagniImageInplace);
-    }
+    const overrideConfig = getStandaloneConfig(currentScript);
+    init(overrideConfig);
   }
 }
-export { MagniImageInplace, config, MagniImageInplace as default };
+export { init as default };

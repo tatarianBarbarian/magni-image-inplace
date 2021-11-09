@@ -1,4 +1,4 @@
-# magni-image-inplace
+# magni-image-inplace (UNDER DEVELOPMENT NON-READY FOR PRODUCTION)
 
 That simple inplace image magnifier.
 
@@ -17,7 +17,6 @@ Demos:
 
 ### 1. As standalone script
 
-
 ```html
 <script 
     src="https://cdn.jsdelivr.net/npm/magni-image-inplace@latest/dist/lib/magni-preview-inplace.umd.js"
@@ -35,17 +34,96 @@ Install module:
 npm install magni-image-inplace
 ```
 
-Import and define component in your JS-file:
+Import and init component in your JS-file:
 
 ```js
-import MagniImageInplace from 'magni-image-inplace';
+import init from 'magni-image-inplace';
 
-if (!window.customElements.get("magni-image-inplace")) {
-    window.customElements.define("magni-image-inplace", MagniImageInplace);
-}
+init();
 ```
 
+## Configuration
+
+Please note that this component is for **dekstop users experience**, for mobiles and touch devices it's better using something like [pinchzoom library](https://manuelstofer.github.io/pinchzoom/).
+
+As component has two flows of initialization, it has two flows of configuration.
+
+The standalone script configured by data-attributes in `<script>` tag, the module flow exports function `init` which accepts config in JS-object form.
+
+| Property | Type                     | Default             | Module  | Standalone   |
+|----------|--------------------------|---------------------|---------|--------------|
+| media    | media query string       | (min-width: 1280px) | media   | data-media   |
+| tagname  | min two hyphenated words | magni-image-inplace | tagname | data-tagname |
+
+### Tag name
+
+Default HTML tag name for component is `magni-image-inplace`.
+
+It is possible to pick other. Please note that Custom Elements specification allow only names with hyphen like: `my-component` or `my-awesome-custom-element`.
+
+1. Standalone flow
+
+```html
+<script 
+    src="https://cdn.jsdelivr.net/npm/magni-image-inplace@latest/dist/lib/magni-preview-inplace.umd.js"
+    data-standalone
+    data-tagname="magni-img"
+    defer
+></script>
+```
+
+And then it is possible to use it:
+
+```html
+<magni-img>
+    ...
+</magni-img>
+```
+
+2. Module flow
+
+Provided by default `init` methid accepts JS-object as an argument and has field: `tagname`, `media` which allow to configure component.
+
+```js
+import init from 'magni-image-inplace';
+
+init({
+    tagname: 'magni-img'
+});
+```
+
+### Media rule
+
+Default component's media rule is `(min-width: 1280px)`. It means that it will be active only on devices with screen width of 1280px and larger.
+
+There is three ways to set on which screen sizes the component will be active:
+
+1. In standalone script flow it needs to add `data-media` attribute with media-query.
+It will affect each component instance.
+
+2. In module flow it is needed to import `config` function from module. It accepts object with field `media` as an argument.
+Example of configuring this way:
+
+```js
+import init from 'magni-image-inplace';
+
+init({
+    media: '(min-width: 1600px)'
+});
+```
+
+3. Specify `media` attribute on component itself in HTML:
+
+```html
+<magni-image-inplace media="(min-width: 1600px)">
+    ...
+</magni-image-inplace>
+```
+
+This method is compatible with previous two and override configuration for concrete instance.
+
 ## Usage
+
 See [examples](https://tatarianbarbarian.github.io/magni-image-inplace/)
 
 Component works as a wrapper for `<img>`:
