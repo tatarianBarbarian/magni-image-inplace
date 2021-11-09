@@ -29,6 +29,8 @@ Demos:
 
 [Example](https://codesandbox.io/s/magni-image-inplace-standalone-script-example-s3z7y?file=/index.html:95-107)
 
+Please note that `data-standalone` attribute is needed for correct work in this flow.
+
 ```html
 <script 
     src="https://unpkg.com/magni-image-inplace@latest/dist/lib/magni-preview-inplace.umd.js"
