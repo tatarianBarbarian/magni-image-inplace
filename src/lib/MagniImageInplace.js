@@ -55,6 +55,8 @@ const getConfig = (overrideConfig = {}) => ({...defaultConfig, ...overrideConfig
 const getStandaloneConfig = (currentScript) => {
     const raw = currentScript.dataset.magni;
     
+    if (!raw) return getConfig();
+
     try {
         return getConfig(JSON.parse(raw));
     }
