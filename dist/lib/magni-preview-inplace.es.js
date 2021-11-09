@@ -66,6 +66,8 @@ const defaultConfig = {
 const getConfig = (overrideConfig = {}) => __spreadValues(__spreadValues({}, defaultConfig), overrideConfig);
 const getStandaloneConfig = (currentScript2) => {
   const raw = currentScript2.dataset.magni;
+  if (!raw)
+    return getConfig();
   try {
     return getConfig(JSON.parse(raw));
   } catch (e) {
