@@ -12,13 +12,25 @@ Demos:
 - [React](https://codesandbox.io/s/magni-image-inplace-react-example-8cox6)
 - [Vue](https://codesandbox.io/s/magni-image-inplace-vue-example-gvehq)
 
+## Contents
 
-## Installation
+[Installation](#installation)
+- [Standalone script](#installation_standalone)
+- [NPM Package](#installation_npm)
 
-- Standalone script
-- NPM package 
+[Configuration](#config)
+- [Tag name](#config_tagname)
+- [Media](#config_media)
 
-### 1. As standalone script
+[Usage](#usage)
+
+<a name="installation"></a>
+
+## Installation 
+
+<a name="installation_standalone"></a>
+
+### 1. As standalone script 
 
 [Example](https://codesandbox.io/s/magni-image-inplace-standalone-script-example-s3z7y)
 
@@ -31,7 +43,9 @@ Demos:
 ></script>
 ```
 
-### 2. As NPM-package
+<a name="installation_npm"></a>
+
+### 2. As NPM-package 
 
 Install package:
 
@@ -47,6 +61,8 @@ import init from 'magni-image-inplace';
 init();
 ```
 
+<a name="config"></a>
+
 ## Configuration
 
 Please note that this component is for **dekstop users experience**, for mobiles and touch devices it's better using something like [pinchzoom library](https://manuelstofer.github.io/pinchzoom/).
@@ -59,6 +75,8 @@ The standalone script configured by data-attributes in `<script>` tag, the modul
 |----------|--------------------------|---------------------|---------|--------------|
 | media    | media query string       | (min-width: 1280px) | media   | data-media   |
 | tagname  | min two hyphenated words | magni-image-inplace | tagname | data-tagname |
+
+<a name="config_tagname"></a>
 
 ### Tag name
 
@@ -97,6 +115,8 @@ init({
 });
 ```
 
+<a name="config_media"></a>
+
 ### Media rule
 
 Default component's media rule is `(min-width: 1280px)`. It means that it will be active only on devices with screen width of 1280px and larger.
@@ -126,6 +146,8 @@ init({
 ```
 
 This method is compatible with previous two and override configuration for concrete instance.
+
+<a name="usage"></a>
 
 ## Usage
 
