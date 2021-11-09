@@ -38,7 +38,7 @@ Demos:
 <script 
     src="https://cdn.jsdelivr.net/npm/magni-image-inplace@0.2.0/dist/lib/magni-preview-inplace.umd.js"
     data-standalone
-    data-tag-name="magnify-image-inplace"
+    data-tag-name="magni-image-inplace"
     defer
 ></script>
 ```
