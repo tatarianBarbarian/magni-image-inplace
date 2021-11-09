@@ -29,9 +29,9 @@ Demos:
 
 ```html
 <script 
-    src="https://cdn.jsdelivr.net/npm/magni-image-inplace@0.2.0/dist/lib/magni-preview-inplace.umd.js"
+    src="https://cdn.jsdelivr.net/npm/magni-image-inplace@0.3.0/dist/lib/magni-preview-inplace.umd.js"
     data-standalone
-    data-tag-name="magni-image-inplace"
+    data-magni='{"tagname": "magni-image-inplace", "media": "(min-width: 1280px)"}'
     defer
 ></script>
 ```
@@ -49,7 +49,10 @@ Import and init component in your JS-file:
 ```js
 import init from 'magni-image-inplace';
 
-init();
+init({
+    tagname: 'magni-image-inplace',
+    media: '(min-width: 1280px)'
+});
 ```
 
 ## Configuration
@@ -60,58 +63,30 @@ On mobiles and tablets it's better using something like [pinchzoom library](http
 
 As component has two flows of initialization, it has two flows of configuration.
 
-The standalone script configured by data-attributes in `<script>` tag, the module flow exports function `init` which accepts config in JS-object form.
+The standalone script configured by attribute `data-magni`, which accpeps config in JSON-form. 
+The module flow exports function `init` which accepts config in JS-object form.
 
-| Property | Type                     | Default             | Module  | Standalone   |
-|----------|--------------------------|---------------------|---------|--------------|
-| media    | media query string       | (min-width: 1280px) | media   | data-media   |
-| tagname  | min two hyphenated words | magni-image-inplace | tagname | data-tagname |
+| Property | Type                                 | Default             |
+|----------|--------------------------------------|---------------------|
+| media    | string with media query              | (min-width: 1280px) |
+| tagname  | string with min two hyphenated words | magni-image-inplace |
+
 
 ### Tag name
 
-Default HTML tag name for component is `magni-image-inplace`.
+Default: `magni-image-inplace`.
 
-It is possible to pick other. Please note that Custom Elements specification allow only names with hyphen like: `my-component` or `my-awesome-custom-element`.
-
-1. Standalone flow
-
-```html
-<script 
-    src="https://cdn.jsdelivr.net/npm/magni-image-inplace@0.2.0/dist/lib/magni-preview-inplace.umd.js"
-    data-standalone
-    data-tagname="magni-img"
-    defer
-></script>
-```
-
-And then it is possible to use it:
-
-```html
-<magni-img>
-    ...
-</magni-img>
-```
-
-2. Module flow
-
-Exported by default `init` method accepts JS-object as an argument and has field: `tagname`, `media` which allow to configure component.
-
-```js
-import init from 'magni-image-inplace';
-
-init({
-    tagname: 'magni-img'
-});
-```
+Please note that Custom Elements specification allow only names with hyphen like: `my-component` or `my-awesome-custom-element`.
 
 ### Media rule
 
-Default component's media rule is `(min-width: 1280px)`. It means that it will be active only on devices with screen width of 1280px and larger.
+Default component's media rule is `(min-width: 1280px)`. 
+It means that it will be active only on devices with screen width of 1280px and larger.
 
 There is three ways to set on which screen sizes the component will be active:
 
-1. In standalone script flow it needs to add `data-media` attribute with media-query.
-It will affect each component instance.
+1. In standalone script flow it needs to add `media` field to config in `data-magni`.
+It will affect every component instance.
 
 2. In module flow it is needed to import `config` function from module. It accepts object with field `media` as an argument.
 Example of configuring this way:

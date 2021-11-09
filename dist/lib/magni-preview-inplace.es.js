@@ -65,18 +65,12 @@ const defaultConfig = {
 };
 const getConfig = (overrideConfig = {}) => __spreadValues(__spreadValues({}, defaultConfig), overrideConfig);
 const getStandaloneConfig = (currentScript2) => {
-  const dataAttrsConfigMap = {
-    tagname: "tagname",
-    media: "media"
-  };
-  const overrideConfig = {};
-  Object.entries(dataAttrsConfigMap).forEach(([dataAttr, configKey]) => {
-    const attrValue = currentScript2.dataset[dataAttr];
-    if (attrValue) {
-      overrideConfig[configKey] = attrValue;
-    }
-  });
-  return getConfig(overrideConfig);
+  const raw = currentScript2.dataset.magni;
+  try {
+    return getConfig(JSON.parse(raw));
+  } catch (e) {
+    throw e;
+  }
 };
 const init = (overrideConfig = {}) => {
   const configuration = getConfig(overrideConfig);
