@@ -54,7 +54,9 @@ init();
 
 ## Configuration
 
-Please note that this component is for **dekstop users experience**, for mobiles and touch devices it's better using something like [pinchzoom library](https://manuelstofer.github.io/pinchzoom/).
+Please note that this component by design is for **dekstop users experience**. 
+
+On mobiles and tablets it's better using something like [pinchzoom library](https://manuelstofer.github.io/pinchzoom/).
 
 As component has two flows of initialization, it has two flows of configuration.
 
@@ -92,7 +94,7 @@ And then it is possible to use it:
 
 2. Module flow
 
-Provided by default `init` methid accepts JS-object as an argument and has field: `tagname`, `media` which allow to configure component.
+Exported by default `init` method accepts JS-object as an argument and has field: `tagname`, `media` which allow to configure component.
 
 ```js
 import init from 'magni-image-inplace';
