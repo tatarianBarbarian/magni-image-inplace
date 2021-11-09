@@ -29,7 +29,7 @@ Demos:
 
 ```html
 <script 
-    src="https://cdn.jsdelivr.net/npm/magni-image-inplace@0.3.1/dist/lib/magni-preview-inplace.umd.js"
+    src="https://unpkg.com/magni-image-inplace@latest/dist/lib/magni-preview-inplace.umd.js"
     data-standalone
     data-magni='{"tagname": "magni-image-inplace", "media": "(min-width: 1280px)"}'
     defer
