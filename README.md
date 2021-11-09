@@ -1,4 +1,4 @@
-# magni-image-inplace (UNDER DEVELOPMENT NON-READY FOR PRODUCTION)
+# magni-image-inplace
 
 That simple inplace image magnifier.
 
