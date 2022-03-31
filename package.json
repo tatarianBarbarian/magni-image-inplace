@@ -20,7 +20,7 @@
     "url": "https://github.com/tatarianBarbarian/magni-image-inplace.git"
   },
   "homepage": "https://tatarianbarbarian.github.io/magni-image-inplace/",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "files": [
     "dist/lib"
   ],
